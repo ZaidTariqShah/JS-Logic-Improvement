@@ -1,11 +1,9 @@
-let num = 0;
+let num = 1234568;
 let maxEven = -1;
 do{
     let check = num % 10;
-    if(check % 2 === 0) {
-        if(check > maxEven) {
+    if(check % 2 === 0 && check > maxEven) {
             maxEven = check;
-        }
     }
     num = Math.floor(num/10);
 } while(num > 0)
