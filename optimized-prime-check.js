@@ -9,7 +9,8 @@ if(num > 2 && num % 2 === 0) {
 if(num > 3 && num % 3 === 0) {
     isPrime = false;
 }
-for(let j = 1; ((6*j - 1) <= Math.sqrt(num)); j++){
+let limit = Math.sqrt(num);
+for(let j = 1; ((6*j - 1) <= limit); j++){
     if(num % (6 * j -1 ) === 0) {
         isPrime = false;
         break;
