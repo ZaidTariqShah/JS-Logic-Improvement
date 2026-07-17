@@ -1,4 +1,4 @@
-let num = 0;
+let num = 11234556;
 let original = num;
 let count = 0;
 
