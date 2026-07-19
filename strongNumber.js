@@ -6,7 +6,7 @@ if (isNaN(num) || num < 0) {
 } else {
     let nextNum = num;
 
-    do {
+    do {                                      // use do while in order to handle the Input 0 here
         let digit = nextNum % 10;
         let factorial = 1;
 
