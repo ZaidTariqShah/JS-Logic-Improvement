@@ -6,8 +6,8 @@ let a = 0;
 let b = 1;
 while(a <= num) {
     console.log(a);
-    let c = a + b;
+    let next = a + b;
     a = b;
-    b = c;
+    b = next;
 }
 }
