@@ -6,7 +6,7 @@ if (isNaN(num) || num < 0) {
     let a = 0;
     let b = 1;
 
-    while (a <= num) {
+    for (let i = 1; i <= num; i++) {
         console.log(a);
 
         let next = a + b;
