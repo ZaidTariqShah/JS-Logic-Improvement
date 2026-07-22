@@ -1,4 +1,4 @@
-let arr = [5, 5, 5];
+let arr = [5, 5, 5]; //IT TOOK ME AT LEAST 3 HOURS TO BUILD THIS AND IT WAS VERY EXHAUSTING TOO
 
 if (arr.length < 3) {
     alert("Array is Empty OR has less than 3 elements in it");
