@@ -39,8 +39,7 @@ if(num === 1) {
 } else {
     console.log(`It is not a Happy Number`)
 }
-VM87:12 It is a Happy Number
-undefined
+
 let num = Number(prompt("Please write a number"));
     while(num !== 1 && num !== 4) {
     let sum = 0;
