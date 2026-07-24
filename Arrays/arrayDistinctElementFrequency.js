@@ -12,13 +12,13 @@ for (let i = 0; i < arr.length; i++) {
     }
 
     if (track === 0) {
-        for (let k = 0; k < arr.length; k++) {
-            if (arr[i] === arr[k]) {
-                count++;
+        for (let k = 0; k < arr.length; k++) { //1 appeared 1 times                                  
+            if (arr[i] === arr[k]) {    //2 appeared 1 times
+                count++;                    //3 appeared 1 times
             }
-        }
-
-        console.log(`${arr[i]} appeared ${count} times`);
+        }                                      //4 appeared 2 times
+                                                 //5 appeared 1 times
+        console.log(`${arr[i]} appeared ${count} times`); //6 appeared 1 times
     }
 }
 // OPTIMIZED APPROACH
