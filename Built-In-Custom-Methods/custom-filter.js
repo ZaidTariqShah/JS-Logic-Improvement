@@ -35,3 +35,24 @@ const result = array.filter(function (i) {
 });
 
 console.log(result);
+
+//---------------------------------------------------------Easy VERSION-------------------------------------------------------------------
+let array = [1,2,3,4,5,6,7,8,9,10];
+
+function filter(cb) {
+    let newArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (cb(array[i], i, array)) {
+            newArray.push(array[i]);
+        }
+    }
+
+    return newArray;
+}
+
+const result = filter(function(i) {
+    return i % 2 === 0;
+});
+
+console.log(result);
