@@ -34,7 +34,11 @@ let array = {
         }
     },
 
-    reduce: function reduce(cb, initial) {
+    reduce: function (cb, initial) {
+        if (this.length === 0 && initial === undefined) {
+            throw new Error("Array is empty");
+        }
+
         let accumulator;
         let startIndex;
 
@@ -51,6 +55,19 @@ let array = {
         }
 
         return accumulator;
+    },
+
+    pop: function () {
+        if (this.length === 0) {
+            return undefined;
+        }
+
+        let lastValue = this[this.length - 1];
+
+        delete this[this.length - 1];
+        this.length--;
+
+        return lastValue;
     }
 };
 
@@ -90,3 +107,11 @@ array.forEach((element, i, array) => {
 });
 
 console.log("array:", array);
+
+let old = array.pop();
+
+for (let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+}
+
+console.log("oldValue:", old);
