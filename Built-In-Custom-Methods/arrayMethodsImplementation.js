@@ -68,19 +68,38 @@ let array = {
         this.length--;
 
         return lastValue;
+    },
+
+    unshift: function (...elements) {
+        let shiftBy = elements.length;
+
+        for (let i = this.length - 1; i >= 0; i--) {
+            this[i + shiftBy] = this[i];
+        }
+
+        for (let i = 0; i < elements.length; i++) {
+            this[i] = elements[i];
+        }
+
+        this.length += shiftBy;
+
+        return this.length;
+    },
+
+    find: function (cb) {
+        for (let i = 0; i < this.length; i++) {
+            if (cb(this[i], i, this)) {
+                return this[i];
+            }
+        }
+
+        return undefined;
     }
 };
 
-array.push(1);
-array.push(2);
-array.push(3);
-array.push(4);
-array.push(5);
-array.push(6);
-array.push(7);
-array.push(8);
-array.push(9);
-array.push(10);
+for(let i = 0; i <= 10; i++) {
+    array.push(i);
+}
 
 console.log(array);
 
@@ -115,3 +134,12 @@ for (let i = 0; i < array.length; i++) {
 }
 
 console.log("oldValue:", old);
+
+let size = array.unshift(10, 20, 30);
+
+console.log("size:", size);
+console.log(array);
+
+let result = array.find((element) => element > 20);
+
+console.log("find:", result);
