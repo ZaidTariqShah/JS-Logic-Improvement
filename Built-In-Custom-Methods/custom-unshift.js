@@ -16,4 +16,5 @@ function unshift(...elements) {
 
 const size = unshift(10, 20, 30);
 
-console.log(arr, size);
+console.log(arr);
+console.log(size) // returned size
