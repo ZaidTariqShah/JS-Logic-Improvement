@@ -81,7 +81,7 @@ let array = {
             this[i] = elements[i];
         }
 
-        this.length += shiftBy;
+        this.length += shiftBy; // To update the length of array of an array
 
         return this.length;
     },
