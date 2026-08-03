@@ -1,6 +1,6 @@
 let arr = [1, 2, 3, 4, 5];
 
-function unshift(...elements) {
+function unshift(...element) {
     let shiftBy = element.length;
 
     for (let i = arr.length - 1; i >= 0; i--) {
