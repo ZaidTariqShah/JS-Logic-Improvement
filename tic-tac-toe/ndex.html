@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tic Tac Toe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: "Poppins", Arial, sans-serif;
+
+        background:
+          radial-gradient(circle at 20% 20%, #1e293b, #0f172a 60%),
+          linear-gradient(135deg, #312e81, #0f172a);
+        background-blend-mode: overlay;
+
+        overflow: hidden;
+        position: relative;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        filter: blur(120px);
+        z-index: 0;
+        opacity: 0.35;
+      }
+
+      body::before {
+        background: #6366f1;
+        top: -120px;
+        left: -120px;
+      }
+
+      body::after {
+        background: #ec4899;
+        bottom: -140px;
+        right: -140px;
+      }
+
+      .game {
+        position: relative;
+        z-index: 1;
+
+        text-align: center;
+
+        padding: 40px 46px 34px;
+
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 28px;
+
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+
+        background: linear-gradient(90deg, #818cf8, #f472b6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      h1::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        margin: 14px auto 0;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #818cf8, #f472b6);
+        opacity: 0.7;
+      }
+
+      #board {
+        width: 390px;
+        height: 390px;
+        margin-top: 26px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+
+        gap: 12px;
+
+        padding: 12px;
+
+        background: rgba(15, 23, 42, 0.55);
+
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35);
+      }
+
+      #board button {
+        border: none;
+        border-radius: 14px;
+
+        background: linear-gradient(160deg, #f8fafc, #e2e8f0);
+
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 68px;
+        font-weight: 700;
+
+        color: #4f46e5;
+
+        cursor: pointer;
+
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease,
+          box-shadow 0.15s ease,
+          color 0.15s ease;
+      }
+
+      #board button:hover {
+        background: linear-gradient(160deg, #ffffff, #f1f5f9);
+
+        transform: translateY(-4px);
+
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
+      }
+
+      #board button:active {
+        transform: scale(0.92);
+      }
+
+      #board button:not(:empty) {
+        cursor: default;
+      }
+
+      #board button:disabled {
+        cursor: not-allowed;
+        opacity: 0.9;
+      }
+
+      #para {
+        margin: 26px 0 0;
+
+        min-height: 28px;
+
+        font-size: 19px;
+        font-weight: 600;
+
+        color: #e2e8f0;
+
+        letter-spacing: 0.3px;
+      }
+
+      #reset {
+        margin-top: 18px;
+
+        padding: 12px 34px;
+
+        border: none;
+        border-radius: 999px;
+
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+
+        color: #ffffff;
+
+        background: linear-gradient(90deg, #6366f1, #ec4899);
+
+        cursor: pointer;
+
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          filter 0.15s ease;
+      }
+
+      #reset:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.08);
+        box-shadow: 0 12px 24px rgba(236, 72, 153, 0.4);
+      }
+
+      #reset:active {
+        transform: translateY(0) scale(0.96);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="game">
+      <h1>Tic Tac Toe</h1>
+
+      <div id="board">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+
+      <p id="para"></p>
+
+      <button id="reset">Reset</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
